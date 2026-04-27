@@ -1,6 +1,7 @@
 from fastapi import APIRouter, UploadFile
 from parsers.parser_choice import get_parser
 from parsers.pdf import PDFparser
+from chunkers.fixed_size import fixed_size
 import magic
 
 
@@ -12,11 +13,12 @@ async def upload_doc(file: UploadFile):
     contents = await file.read()
     mime_type = magic.from_buffer(contents, mime=True)
     parser = get_parser(mime_type)#gets parser
-    text_list = parser.parse(contents)
-    
+    text = parser.parse(contents)
+    for n in text_list:
+        print(n)
     #chunk
-
-
+    # gets a list of chunks
+    chunks = fixed_size(text)
     #embeddings
 
 
