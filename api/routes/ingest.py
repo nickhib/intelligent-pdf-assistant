@@ -4,6 +4,7 @@ from parsers.pdf import PDFparser
 from chunkers.fixed_size import fixed_size
 from pydantic import BaseModel
 import magic
+import uuid
 
 
 router = APIRouter()
@@ -22,7 +23,7 @@ async def upload_doc(request: Request, file: UploadFile):
     embeddings = model.st_get_embeddings(chunks)
     collection.add(documents= chunks,
     embeddings=embeddings.tolist(),
-    ids=[str(i) for i in range(len(chunks))]
+    ids=[str(uuid.uuid4()) for _ in chunks]
     )
     return {"filename": file.filename, "chunks": len(chunks)}
 

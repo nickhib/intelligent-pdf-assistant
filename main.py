@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from api.routes.ingest import router as ingest_router
 from api.routes.query import router as query_router
 from contextlib import asynccontextmanager
-from embeddings.sentance_transformer import EmbeddingModel
+from embeddings.sentence_transformer import EmbeddingModel
 import chromadb
 import anthropic
 from dotenv import load_dotenv
