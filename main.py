@@ -26,4 +26,4 @@ app.include_router(query_router)
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Server Up"}

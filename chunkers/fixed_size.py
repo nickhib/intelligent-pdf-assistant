@@ -1,6 +1,6 @@
 
 
-from transformers import AutoTokenizer, AutoModel
+from transformers import AutoTokenizer
 
 
 tokenizer = AutoTokenizer.from_pretrained('sentence-transformers/all-MiniLM-L6-v2')
